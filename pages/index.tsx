@@ -9,7 +9,7 @@ export default function Home() {
     <main className={`${styles.page}`}>
       <div className={`${styles.con}`}>
         <div className={`${styles.sitecon}`}>
-          <iframe src="http://www.bbc.com"></iframe>
+          <iframe src="https://besocial-d0f50b.webflow.io/"></iframe>
         </div>
         <img src="frame.png" className={` ${styles.frame}`} />
       </div>

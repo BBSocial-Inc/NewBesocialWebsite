@@ -15,22 +15,23 @@ $vw-viewport: 1920;
 .con {
   position: relative;
   width: get-vw(1800px);
-  height: get-vw(1100px);
+  height: get-vw(900px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .frame {
   width: get-vw(1800px);
-  height: get-vw(1100px);
+  height: get-vw(900px);
   //   z-index: 1;
 }
 .sitecon {
   width: get-vw(1405px);
-  height: get-vw(960px);
+  height: get-vw(780px);
   background-color: black;
   position: absolute;
-  bottom: get-vw(115px);
+  top: get-vw(25px);
+  //   bottom: get-vw(115px);
   //   border-radius: get-vw(15px);
   border-top-right-radius: get-vw(15px);
   border-top-left-radius: get-vw(15px);
