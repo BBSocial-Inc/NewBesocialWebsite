@@ -1,0 +1,43 @@
+$vw-viewport: 1920;
+@function get-vw($font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+  @return $font / $vw-context * 1vw;
+  @return $font;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   background-color: red;
+  height: 100vh;
+}
+.con {
+  position: relative;
+  width: get-vw(1800px);
+  height: get-vw(1100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.frame {
+  width: get-vw(1800px);
+  height: get-vw(1100px);
+  //   z-index: 1;
+}
+.sitecon {
+  width: get-vw(1405px);
+  height: get-vw(960px);
+  background-color: black;
+  position: absolute;
+  bottom: get-vw(115px);
+  //   border-radius: get-vw(15px);
+  border-top-right-radius: get-vw(15px);
+  border-top-left-radius: get-vw(15px);
+  //   z-index: 1;
+  overflow: hidden;
+}
+.sitecon iframe {
+  width: 100%;
+  height: 100%;
+}
