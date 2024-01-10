@@ -9,9 +9,15 @@ export default function Home() {
     <main className={`${styles.page}`}>
       <div className={`${styles.con}`}>
         <div className={`${styles.sitecon}`}>
-          <iframe src="https://besocial-d0f50b.webflow.io/"></iframe>
+          <iframe src="http://besocial.refir.xyz"></iframe>
         </div>
         <img src="frame.png" className={` ${styles.frame}`} />
+      </div>
+      <div className={`${styles.conx}`}>
+        <div className={`${styles.siteconx}`}>
+          <iframe src="http://besocial.refir.xyz"></iframe>
+        </div>
+        <img src="phone.png" className={` ${styles.framex}`} />
       </div>
     </main>
   );
