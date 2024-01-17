@@ -9,13 +9,18 @@ export default function Home() {
     <main className={`${styles.page}`}>
       <div className={`${styles.con}`}>
         <div className={`${styles.sitecon}`}>
-          <iframe src="http://besocial.refir.xyz"></iframe>
+          {/* <iframe src="your-webflow-link" width="600" height="400" frameborder="0" ></iframe> */}
+
+          <iframe
+            src="http://localhost:3001/html/index.html"
+            sandbox="allow-same-origin allow-scripts allow-popups"
+          ></iframe>
         </div>
         <img src="frame.png" className={` ${styles.frame}`} />
       </div>
       <div className={`${styles.conx}`}>
         <div className={`${styles.siteconx}`}>
-          <iframe src="http://besocial.refir.xyz"></iframe>
+          <iframe src="http://localhost:3001/html/index.html"></iframe>
         </div>
         <img src="phone.png" className={` ${styles.framex}`} />
       </div>
