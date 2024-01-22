@@ -213,13 +213,13 @@ th {
   padding: 0;
 }
 
-/* @font-face {
+@font-face {
   font-family: webflow-icons;
   src: url("data:application/x-font-ttf;charset=utf-8;base64,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")
     format("truetype");
   font-weight: normal;
   font-style: normal;
-} */
+}
 
 [class^="w-icon-"],
 [class*=" w-icon-"] {
@@ -231,7 +231,7 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  /* font-family: webflow-icons !important; */
+  font-family: webflow-icons !important;
 }
 
 .w-icon-slider-right:before {
@@ -333,97 +333,6 @@ html[data-w-dynpage] [data-w-cloak] {
 
 .w-code-block {
   margin: unset;
-}
-
-.w-webflow-badge,
-.w-webflow-badge * {
-  z-index: auto;
-  visibility: visible;
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  max-height: none;
-  max-width: none;
-  min-height: 0;
-  min-width: 0;
-  float: none;
-  clear: none;
-  box-shadow: none;
-  opacity: 1;
-  direction: ltr;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  font-style: inherit;
-  font-variant: inherit;
-  text-align: inherit;
-  letter-spacing: inherit;
-  -webkit-text-decoration: inherit;
-  text-decoration: inherit;
-  text-indent: 0;
-  text-transform: inherit;
-  text-shadow: none;
-  font-smoothing: auto;
-  vertical-align: baseline;
-  cursor: inherit;
-  white-space: inherit;
-  word-break: normal;
-  word-spacing: normal;
-  word-wrap: normal;
-  background: none;
-  border: 0 rgba(0, 0, 0, 0);
-  border-radius: 0;
-  margin: 0;
-  padding: 0;
-  list-style-type: disc;
-  transition: none;
-  display: block;
-  position: static;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  overflow: visible;
-  transform: none;
-  display: none;
-}
-
-.w-webflow-badge {
-  white-space: nowrap;
-  cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-  visibility: visible !important;
-  z-index: 2147483647 !important;
-  color: #aaadb0 !important;
-  opacity: 1 !important;
-  width: auto !important;
-  height: auto !important;
-  background-color: #fff !important;
-  border-radius: 3px !important;
-  margin: 0 !important;
-  padding: 6px !important;
-  font-size: 12px !important;
-  line-height: 14px !important;
-  text-decoration: none !important;
-  /* display: inline-block !important; */
-  position: fixed !important;
-  top: auto !important;
-  bottom: 12px !important;
-  left: auto !important;
-  right: 12px !important;
-  overflow: visible !important;
-  transform: none !important;
-  display: none;
-}
-
-.w-webflow-badge > img {
-  visibility: visible !important;
-  opacity: 1 !important;
-  vertical-align: middle !important;
-  /* display: inline-block !important; */
-  display: none;
 }
 
 h1,
@@ -2316,6 +2225,10 @@ textarea.w-select {
 
 .div-block {
   height: 608px;
+  background-image: url("https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/659408c3d57f32cbe57bf676_Group%204283.png");
+  background-position: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -2354,10 +2267,10 @@ textarea.w-select {
 }
 
 .text {
-  color: #7c7c7c;
+  color: #fff;
   text-align: center;
   -webkit-text-stroke-color: #929292;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 400;
   line-height: 29px;
 }
@@ -2374,7 +2287,7 @@ textarea.w-select {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 65px;
+  margin-top: 29px;
   padding-left: 10vw;
   padding-right: 10vw;
   display: flex;
@@ -2398,7 +2311,7 @@ textarea.w-select {
 .div-block-6 {
   width: 100vw;
   height: auto;
-  margin-top: 65px;
+  margin-top: -20px;
   margin-bottom: 50px;
   padding-left: 10vw;
   padding-right: 10vw;
@@ -2420,14 +2333,14 @@ textarea.w-select {
 }
 
 .div-block-8 {
-  height: 100px;
+  height: auto;
   margin-top: 60px;
   margin-bottom: 0;
 }
 
 .blogs-vlogs {
   color: #fff;
-  margin-top: 124px;
+  margin-top: 102px;
   font-family: Jellee Roman, sans-serif;
   font-size: 50px;
   font-weight: 400;
@@ -2493,6 +2406,7 @@ textarea.w-select {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+  margin-top: 80px;
   padding: 87px 10vw 10px;
   display: flex;
 }
@@ -2676,7 +2590,7 @@ textarea.w-select {
 
 .image-11 {
   width: 499.31px;
-  margin-top: 53px;
+  margin-top: 28px;
   margin-right: 41px;
   padding-top: 0;
   padding-right: 10px;
@@ -2850,6 +2764,7 @@ textarea.w-select {
 .collection-list-wrapper {
   justify-content: space-between;
   align-items: flex-start;
+  margin-top: -17px;
   padding-left: 10vw;
   padding-right: 10vw;
   display: flex;
@@ -2949,6 +2864,13 @@ textarea.w-select {
 @media screen and (min-width: 1280px) {
   .container {
     transform: scale3d(1none, 1none, 1none);
+  }
+
+  .div-block {
+    background-image: url("https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/659408c3d57f32cbe57bf676_Group%204283.png");
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .image-26 {
