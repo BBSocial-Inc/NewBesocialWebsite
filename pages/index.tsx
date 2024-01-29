@@ -12,7 +12,7 @@ export default function Home() {
           {/* <iframe src="your-webflow-link" width="600" height="400" frameborder="0" ></iframe> */}
 
           <iframe
-            src="http://joinbesocial.com/html/index.html"
+            src="http://44.203.251.227:81/html/index.html"
             sandbox="allow-same-origin allow-scripts allow-popups"
           ></iframe>
         </div>
@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       <div className={`${styles.conx}`}>
         <div className={`${styles.siteconx}`}>
-          <iframe src="http://joinbesocial.com/html/index.html"></iframe>
+          <iframe src="http://44.203.251.227:81/html/index.html"></iframe>
         </div>
         <img src="phone.png" className={` ${styles.framex}`} />
       </div>
