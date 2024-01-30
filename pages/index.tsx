@@ -37,7 +37,7 @@ export default function Home() {
 // ::-webkit-scrollbar-track {
 //   box-shadow: inset 0 0 0px grey;
 //   border-radius: 0px;
-// }
+// }sudo 
 
 // /* Handle */
 // ::-webkit-scrollbar-thumb {
