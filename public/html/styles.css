@@ -3619,5 +3619,5 @@ textarea.w-select {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #black;
+  background: black;
 }

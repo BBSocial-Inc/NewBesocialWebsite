@@ -16,6 +16,7 @@ export default function Home() {
             sandbox="allow-same-origin allow-scripts allow-popups"
           ></iframe>
         </div>
+
         <img src="frame.png" className={` ${styles.frame}`} />
       </div>
       <div className={`${styles.conx}`}>
@@ -37,7 +38,7 @@ export default function Home() {
 // ::-webkit-scrollbar-track {
 //   box-shadow: inset 0 0 0px grey;
 //   border-radius: 0px;
-// }sudo 
+// }sudo
 
 // /* Handle */
 // ::-webkit-scrollbar-thumb {
