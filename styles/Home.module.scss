@@ -26,7 +26,7 @@ $vw-viewport: 1920;
 .frame {
   width: get-vw(1800px);
   height: get-vw(900px);
-  //   z-index: 1;
+  // z-index: 1;
 }
 .sitecon {
   width: get-vw(1405px);
@@ -87,7 +87,7 @@ $vw-viewport: 1920;
     border-radius: get-vw(70px);
     // border-top-right-radius: get-vw(15px);
     // border-top-left-radius: get-vw(15px);
-    //   z-index: 1;
+    z-index: 1;
     overflow: hidden;
   }
   .siteconx iframe {

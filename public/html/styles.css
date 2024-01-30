@@ -2199,6 +2199,7 @@ textarea.w-select {
 .image-3 {
   width: 923px;
   height: 923px;
+  z-index: 0;
 }
 
 .we-are-taking-black-african-creators-and-influencer-their-unique-content-to-mainstream-prominence {
@@ -2226,6 +2227,7 @@ textarea.w-select {
 .div-block {
   height: 608px;
   background-image: url("https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/659408c3d57f32cbe57bf676_Group%204283.png");
+
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -3056,6 +3058,7 @@ textarea.w-select {
   .div-block {
     height: 500px;
     margin-top: 1px;
+    background-image: none;
   }
 
   .image-4 {
@@ -3307,6 +3310,7 @@ textarea.w-select {
     margin-top: -41px;
     padding-left: 5vw;
     padding-right: 5vw;
+    background-image: none;
   }
 
   .image-4 {
