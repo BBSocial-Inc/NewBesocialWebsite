@@ -1,18 +1,18 @@
 import styles from "@/styles/Home.module.scss";
-import { getAllPosts } from "@/lib/notion";
-import { useEffect } from "react";
+// import { getAllPosts } from "@/lib/notion";
+// import { useEffect } from "react";
 
-export default function Home({ posts }) {
-  console.log(posts);
-  useEffect(() => {
-    const run = async () => {
-      if (posts) {
-        localStorage.setItem("posts", JSON.stringify(posts));
-      }
-    };
+export default function Home() {
+  // console.log(posts);
+  // useEffect(() => {
+  //   const run = async () => {
+  //     if (posts) {
+  //       localStorage.setItem("posts", JSON.stringify(posts));
+  //     }
+  //   };
 
-    run();
-  }, [posts]);
+  //   run();
+  // }, [posts]);
 
   return (
     <main className={`${styles.page}`}>
@@ -36,15 +36,15 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = await getAllPosts({ includePages: false });
-  // const posts = {
-  //   name: "dsd",
-  // };
+// export async function getStaticProps() {
+//   const posts = await getAllPosts({ includePages: false });
+//   // const posts = {
+//   //   name: "dsd",
+//   // };
 
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }
