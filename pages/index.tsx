@@ -1,18 +1,25 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
+import { getAllPosts } from "@/lib/notion";
+import { useEffect } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+export default function Home({ posts }) {
+  console.log(posts);
+  useEffect(() => {
+    const run = async () => {
+      if (posts) {
+        localStorage.setItem("posts", JSON.stringify(posts));
+      }
+    };
 
-export default function Home() {
+    run();
+  }, [posts]);
+
   return (
     <main className={`${styles.page}`}>
       <div className={`${styles.con}`}>
         <div className={`${styles.sitecon}`}>
-          {/* <iframe src="your-webflow-link" width="600" height="400" frameborder="0" ></iframe> */}
-
           <iframe
-            src="http://localhost:3001/html/index.html"
+            src="https://joinbesocial.com/html/index.html"
             sandbox="allow-same-origin allow-scripts allow-popups"
           ></iframe>
         </div>
@@ -21,7 +28,7 @@ export default function Home() {
       </div>
       <div className={`${styles.conx}`}>
         <div className={`${styles.siteconx}`}>
-          <iframe src="http://localhost:3001/html/index.html"></iframe>
+          <iframe src="https://joinbesocial.com/html/index.html"></iframe>
         </div>
         <img src="phone.png" className={` ${styles.framex}`} />
       </div>
@@ -29,24 +36,15 @@ export default function Home() {
   );
 }
 
-// /* width */
-// ::-webkit-scrollbar {
-//   width: 0px;
-// }
+export async function getStaticProps() {
+  const posts = await getAllPosts({ includePages: false });
+  // const posts = {
+  //   name: "dsd",
+  // };
 
-// /* Track */
-// ::-webkit-scrollbar-track {
-//   box-shadow: inset 0 0 0px grey;
-//   border-radius: 0px;
-// }sudo
-
-// /* Handle */
-// ::-webkit-scrollbar-thumb {
-//   background: black;
-//   border-radius: 00px;
-// }
-
-// /* Handle on hover */
-// ::-webkit-scrollbar-thumb:hover {
-//   background: #black;
-// }
+  return {
+    props: {
+      posts,
+    },
+  };
+}
