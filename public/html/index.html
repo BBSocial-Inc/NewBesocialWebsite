@@ -341,47 +341,89 @@
         </div>
       </div>
     </div>
+
     <div class="div-block-6">
-      <div
-        data-w-id="40d58c98-12e4-338e-fb13-9ca82b74a357"
-        style="opacity: 0"
-        class="footet"
-      >
-        <div>
-          <div class="div-block-19">
-            <div class="text-4">Shopping</div>
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-item">
+            <div
+              data-w-id="40d58c98-12e4-338e-fb13-9ca82b74a357"
+              style="opacity: 0"
+              class="footet"
+            >
+              <div>
+                <div class="div-block-19">
+                  <div class="text-4">Shopping</div>
+                </div>
+                <div class="own-hashtag-2">Social<br />Shopping</div>
+                <div
+                  class="create-own-and-sell-trends-using-your-unique-hashtags"
+                >
+                  Social shopping and social <br />
+                  commerce made simpler! <br />
+                  <br />
+                  Purchase digital products <br />
+                  from your favorite creators <br />directly in the BeSocial app
+                </div>
+              </div>
+              <img
+                src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/6595c98c2ce9e22bb48ec0f6_Group%204297.png"
+                loading="lazy"
+                alt=""
+                class="image-18"
+              />
+              <img
+                src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1).png"
+                loading="lazy"
+                sizes="(max-width: 479px) 100vw, (max-width: 991px) 329.296875px, 499.296875px"
+                srcset="
+                  https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1)-p-500.png  500w,
+                  https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1)-p-800.png  800w,
+                  https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1).png       1028w
+                "
+                alt=""
+                class="image-11"
+              />
+              <div class="text-5">
+                Download App
+                <img style="margin-left: 5px" src="../maki_arrow.svg" />
+              </div>
+            </div>
           </div>
-          <div class="own-hashtag-2">Social<br />Shopping</div>
-          <div class="create-own-and-sell-trends-using-your-unique-hashtags">
-            Social shopping and social <br />
-            commerce made simpler! <br />
-            <br />
-            Purchase digital products <br />
-            from your favorite creators <br />directly in the BeSocial app
+          <div class="carousel-item">
+            <div
+              data-w-id="40d58c98-12e4-338e-fb13-9ca82b74a357"
+              style="opacity: 0"
+              class="footet"
+            >
+              <div>
+                <div class="div-block-19">
+                  <div class="text-4">Battle</div>
+                </div>
+                <div class="own-hashtag-2">Battle<br />Challenge</div>
+                <div
+                  class="create-own-and-sell-trends-using-your-unique-hashtags"
+                >
+                  Battle your friends in a <br />contest to see who wins!
+                </div>
+              </div>
+              <img src="./pic.png" loading="lazy" alt="" class="image-18" />
+              <img
+                src="../pic.png"
+                loading="lazy"
+                sizes="(max-width: 479px) 100vw, (max-width: 991px) 329.296875px, 499.296875px"
+                alt=""
+                class="image-11"
+              />
+              <div class="text-5">
+                Download App
+                <img style="margin-left: 5px" src="../maki_arrow.svg" />
+              </div>
+            </div>
           </div>
-        </div>
-        <img
-          src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/6595c98c2ce9e22bb48ec0f6_Group%204297.png"
-          loading="lazy"
-          alt=""
-          class="image-18"
-        />
-        <img
-          src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1).png"
-          loading="lazy"
-          sizes="(max-width: 479px) 100vw, (max-width: 991px) 329.296875px, 499.296875px"
-          srcset="
-            https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1)-p-500.png  500w,
-            https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1)-p-800.png  800w,
-            https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65aeaba8476a16db501b495e_Group%204294%20(1).png       1028w
-          "
-          alt=""
-          class="image-11"
-        />
-        <div class="text-5">
-          Download App <img style="margin-left: 5px" src="../maki_arrow.svg" />
         </div>
       </div>
+
       <div class="div-block-8">
         <div
           data-w-id="919210f9-fc69-3543-d006-2c4451a60659"
@@ -392,6 +434,7 @@
         </div>
       </div>
     </div>
+
     <div
       data-w-id="bf924835-8a45-72bc-1a50-6410a04c6390"
       style="opacity: 0"
@@ -516,6 +559,67 @@
           storeLink.attr("href", appStoreURL);
         } else {
           storeLink.attr("href", playStoreURL);
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        var currentIndex = 0;
+        var items = $(".carousel-item");
+        var totalItems = items.length;
+
+        // Set interval for auto-sliding (adjust the duration as needed)
+        var slideInterval = setInterval(function () {
+          if (currentIndex < totalItems - 1) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateCarousel();
+        }, 5000); // Change the interval duration (in milliseconds) as needed
+
+        // Add event listener for next button
+        $("#next").click(function () {
+          if (currentIndex < totalItems - 1) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateCarousel();
+          resetInterval();
+        });
+
+        // Add event listener for previous button
+        $("#prev").click(function () {
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else {
+            currentIndex = totalItems - 1;
+          }
+          updateCarousel();
+          resetInterval();
+        });
+
+        // Function to update the carousel display
+        function updateCarousel() {
+          var newTransformValue = -currentIndex * 100 + "%";
+          $(".carousel").css(
+            "transform",
+            "translateX(" + newTransformValue + ")"
+          );
+        }
+
+        // Function to reset the interval
+        function resetInterval() {
+          clearInterval(slideInterval);
+          slideInterval = setInterval(function () {
+            if (currentIndex < totalItems - 1) {
+              currentIndex++;
+            } else {
+              currentIndex = 0;
+            }
+            updateCarousel();
+          }, 5000); // Change the interval duration (in milliseconds) as needed
         }
       });
     </script>

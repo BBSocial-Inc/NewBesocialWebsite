@@ -3625,3 +3625,18 @@ textarea.w-select {
 ::-webkit-scrollbar-thumb:hover {
   background: black;
 }
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+}
