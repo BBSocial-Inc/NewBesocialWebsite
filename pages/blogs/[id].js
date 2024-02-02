@@ -27,13 +27,32 @@ const BlogPost = () => {
   }, [id]);
 
   if (!blog) {
-    return <p>Loading...</p>;
+    return (
+      <div className="w-screen h-screen flex flex-col justify-center items-center">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-md rounded-md">
-      <h1 className="text-4xl font-bold mb-4 text-gray-800">{blog.title}</h1>
-      <p className="text-gray-600 mb-4">{blog.summary}</p>
+    <div className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-md rounded-md bg-[black]">
+      <div className="flex flex-row justify-between items-align mb-5">
+        <img src="/icon.png" className="w-10 rounded"></img>
+
+        <strong
+          onClick={() => {
+            history.back();
+          }}
+          className="cursor-pointer"
+        >
+          Go Back
+        </strong>
+      </div>
+      <h1 className="text-4xl font-bold mb-4 text-[white]">{blog.title}</h1>
+      <p className="text-[gray] mb-2">
+        <i>{blog.summary}</i>
+      </p>
+      <p className="text-[gray] mb-5 text-sm">By: {blog?.author}</p>
       {blog.imageUrl && (
         <img
           src={blog.imageUrl}
@@ -42,7 +61,7 @@ const BlogPost = () => {
         />
       )}
       <div
-        className="text-gray-800"
+        className="text-[white]"
         dangerouslySetInnerHTML={{ __html: blog.post }}
       />
     </div>
