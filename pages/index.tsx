@@ -1,5 +1,4 @@
 import styles from "@/styles/Home.module.scss";
-import { getAllPosts } from "@/lib/notion";
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import db from "../firebase";

@@ -12289,7 +12289,6 @@ function fetchBlogs() {
     .then((querySnapshot) => {
       console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
-        console.log(doc.id);
         const blog = doc.data();
         const listItem = document.createElement("div");
         listItem.setAttribute("role", "listitem");
