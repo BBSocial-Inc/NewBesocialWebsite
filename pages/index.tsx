@@ -1,25 +1,35 @@
 import styles from "@/styles/Home.module.scss";
-// import { getAllPosts } from "@/lib/notion";
-// import { useEffect } from "react";
+import { getAllPosts } from "@/lib/notion";
+import { useEffect, useState } from "react";
+import { getDocs, collection } from "firebase/firestore";
+import db from "../firebase";
 
 export default function Home() {
-  // console.log(posts);
-  // useEffect(() => {
-  //   const run = async () => {
-  //     if (posts) {
-  //       localStorage.setItem("posts", JSON.stringify(posts));
-  //     }
-  //   };
+  const [blogs, setBlogs] = useState([]);
 
-  //   run();
-  // }, [posts]);
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "blogPosts"));
+        const blogList = [];
+        querySnapshot.forEach((doc) => {
+          blogList.push({ id: doc.id, ...doc.data() });
+        });
+        setBlogs(blogList);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   return (
     <main className={`${styles.page}`}>
       <div className={`${styles.con}`}>
         <div className={`${styles.sitecon}`}>
           <iframe
-            src="https://joinbesocial.com/html/index.html"
+            src="/html/index.html"
             sandbox="allow-same-origin allow-scripts allow-popups"
           ></iframe>
         </div>
@@ -28,23 +38,10 @@ export default function Home() {
       </div>
       <div className={`${styles.conx}`}>
         <div className={`${styles.siteconx}`}>
-          <iframe src="https://joinbesocial.com/html/index.html"></iframe>
+          <iframe src="/html/index.html"></iframe>
         </div>
         <img src="phone.png" className={` ${styles.framex}`} />
       </div>
     </main>
   );
 }
-
-// export async function getStaticProps() {
-//   const posts = await getAllPosts({ includePages: false });
-//   // const posts = {
-//   //   name: "dsd",
-//   // };
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }

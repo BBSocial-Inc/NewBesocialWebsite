@@ -12262,3 +12262,57 @@ Webflow.require("ix2").init({
     ],
   },
 });
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAl7yYj3yPjnWUTVTZyUKT1w-T8zNj44-o",
+  authDomain: "dash-5a9ee.firebaseapp.com",
+  projectId: "dash-5a9ee",
+  storageBucket: "dash-5a9ee.appspot.com",
+  messagingSenderId: "6163332080",
+  appId: "1:6163332080:web:147ac4844712cd030b7b35",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchBlogs();
+});
+
+function fetchBlogs() {
+  const blogList = document.getElementById("blogs");
+
+  db.collection("blogPosts")
+    .get()
+    .then((querySnapshot) => {
+      console.log(querySnapshot);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id);
+        const blog = doc.data();
+        const listItem = document.createElement("div");
+        listItem.setAttribute("role", "listitem");
+        listItem.setAttribute(
+          "class",
+          "collection-item w-dyn-item w-col w-col-4"
+        );
+        listItem.innerHTML = `
+        <aside class="div-block-11">
+          <a
+            style="background-image: url(${blog?.imageUrl})"
+            href="/blogs/${doc.id}"
+            class="div-block-12 w-inline-block"
+          ></a>
+          <div class="own-hashtag">${blog?.title}</div>
+          <div
+            class="create-own-and-sell-trends-using-your-unique-hashtags"
+          >${blog?.summary}</div>
+        </aside>
+    
+          `;
+        blogList.appendChild(listItem);
+      });
+    })
+    .catch((error) => console.error("Error fetching blogs:", error));
+}
