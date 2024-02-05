@@ -1,5 +1,5 @@
 // pages/add-post.js
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   getFirestore,
@@ -9,6 +9,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Editor from "@/components/Editor";
 
 import db from "../firebase";
 
@@ -20,6 +21,8 @@ const AddPost = () => {
   const [coverImage, setCoverImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setloading] = useState(false);
+
+  const editorRef = useRef(null);
 
   const handleImageUpload = async () => {
     const storage = getStorage();
@@ -102,6 +105,7 @@ const AddPost = () => {
           />
         </div>
       </div>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600 mb-1">
@@ -120,13 +124,13 @@ const AddPost = () => {
             Summary:
           </label>
           <textarea
-            className=" text-[black]w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             placeholder="Write a brief summary..."
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Post:
           </label>
@@ -136,19 +140,27 @@ const AddPost = () => {
             onChange={(e) => setPost(e.target.value)}
             placeholder="Compose your blog post..."
           />
-        </div>
-        <div className="mb-4">
+        </div> */}
+        <div className="mb-8">
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Author:
           </label>
           <input
             type="text"
-            className=" text-[black]w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Your name..."
           />
         </div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Post:
+        </label>
+        <Editor
+          onTextChange={(x) => {
+            setPost(x);
+          }}
+        />
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none"

@@ -37,7 +37,7 @@ const BlogPost = () => {
   return (
     <div className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-md rounded-md bg-[black]">
       <div className="flex flex-row justify-between items-align mb-5">
-        <img src="/icon.png" className="w-10 rounded"></img>
+        <img src="/icon.png" className="w-10 rounded" alt={blog.title}></img>
 
         <strong
           onClick={() => {

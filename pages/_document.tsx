@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>{"BeSocial | Endless Entertainment!"} </title>
+        <title>BeSocial | Endless Entertainment!</title>
         <meta name="title" content={"BeSocial | Endless Entertainment!"}></meta>
         <meta
           name="og:title"
