@@ -1,5 +1,5 @@
 // pages/add-post.js
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   getFirestore,
@@ -9,6 +9,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Editor from "@/components/Editor";
 
 import db from "../firebase";
 
@@ -21,6 +22,8 @@ const AddPost = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setloading] = useState(false);
 
+  const editorRef = useRef(null);
+
   const handleImageUpload = async () => {
     const storage = getStorage();
     const storageRef = ref(storage, `images/${coverImage.name}`);
@@ -29,6 +32,37 @@ const AddPost = () => {
 
     const url = await getDownloadURL(storageRef);
     setImageUrl(url);
+    if (imageUrl) {
+      try {
+        const blogPostData = {
+          title,
+          summary,
+          post,
+          author,
+          imageUrl,
+          // Add additional fields as needed
+        };
+
+        const docRef = await addDoc(collection(db, "blogPosts"), blogPostData);
+
+        console.log("Blog post added with ID:", docRef.id);
+
+        // Reset form fields after successful submission
+        setTitle("");
+        setSummary("");
+        setPost("");
+        setAuthor("");
+        setCoverImage(null);
+        setImageUrl(null);
+
+        setloading(false);
+      } catch (error) {
+        setloading(false);
+        console.error("Error adding blog post: ", error);
+      }
+    } else {
+      setloading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -36,34 +70,6 @@ const AddPost = () => {
     setloading(true);
     if (coverImage) {
       await handleImageUpload();
-    }
-
-    try {
-      const blogPostData = {
-        title,
-        summary,
-        post,
-        author,
-        imageUrl,
-        // Add additional fields as needed
-      };
-
-      const docRef = await addDoc(collection(db, "blogPosts"), blogPostData);
-
-      console.log("Blog post added with ID:", docRef.id);
-
-      // Reset form fields after successful submission
-      setTitle("");
-      setSummary("");
-      setPost("");
-      setAuthor("");
-      setCoverImage(null);
-      setImageUrl(null);
-
-      setloading(false);
-    } catch (error) {
-      setloading(false);
-      console.error("Error adding blog post: ", error);
     }
   };
 
@@ -99,6 +105,7 @@ const AddPost = () => {
           />
         </div>
       </div>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600 mb-1">
@@ -106,7 +113,7 @@ const AddPost = () => {
           </label>
           <input
             type="text"
-            className="w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter the title..."
@@ -117,35 +124,43 @@ const AddPost = () => {
             Summary:
           </label>
           <textarea
-            className="w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
             placeholder="Write a brief summary..."
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Post:
           </label>
           <textarea
-            className="w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={post}
             onChange={(e) => setPost(e.target.value)}
             placeholder="Compose your blog post..."
           />
-        </div>
-        <div className="mb-4">
+        </div> */}
+        <div className="mb-8">
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Author:
           </label>
           <input
             type="text"
-            className="w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
+            className=" text-[black] w-full p-3 border rounded-md focus:outline-none focus:border-blue-500"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Your name..."
           />
         </div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Post:
+        </label>
+        <Editor
+          onTextChange={(x) => {
+            setPost(x);
+          }}
+        />
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none"
