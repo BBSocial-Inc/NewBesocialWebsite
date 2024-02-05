@@ -3522,6 +3522,7 @@ textarea.w-select {
   .image-15 {
     padding-bottom: 26px;
     display: block;
+    transform: scale(0.5);
   }
 
   .image-16 {
