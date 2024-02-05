@@ -35,35 +35,9 @@ const BlogPost = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div className="max-w-2xl mx-auto my-8 p-8 shadow-md rounded-md bg-[black]">
       <div className="flex flex-row justify-between items-align mb-5">
         <img src="/icon.png" className="w-10 rounded" alt={blog.title}></img>
-=======
-    <div
-      style={{ border: "none", boxShadow: "none" }}
-      className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-md rounded-md bg-[black]"
-    >
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 25,
-        }}
-        className="w-full flex flex-row justify-between items-align mb-5"
-      >
-        <img
-          style={{
-            width: 50,
-            borderRadius: 5,
-          }}
-          src="/icon.png"
-          className="w-10 rounded"
-          alt={blog.title}
-        ></img>
->>>>>>> ae93e9a9669499a934e22035b04dbaa2184168aa
 
         <strong
           onClick={() => {
