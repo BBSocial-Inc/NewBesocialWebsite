@@ -56,9 +56,11 @@ const AddPost = () => {
         setImageUrl(null);
 
         setloading(false);
+        alert("Post Published");
       } catch (error) {
         setloading(false);
         console.error("Error adding blog post: ", error);
+        alert("Error publishing post, Try again");
       }
     } else {
       setloading(false);
@@ -165,7 +167,7 @@ const AddPost = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none"
         >
-          {loading ? "Loading" : "Submit"}
+          {loading ? "Publishing" : "Submit"}
         </button>
       </form>
     </div>
