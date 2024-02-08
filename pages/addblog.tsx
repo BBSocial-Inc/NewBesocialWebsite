@@ -10,7 +10,13 @@ import {
   getDocs,
   doc,
 } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+} from "firebase/storage";
 // import Editor from "@/components/Editor";
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -22,10 +28,15 @@ const AddPost = () => {
   const [post, setPost] = useState("");
   const [author, setAuthor] = useState("");
   const [coverImage, setCoverImage] = useState(null);
+  const [coverImage2, setCoverImage2] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl2, setImageUrl2] = useState(null);
   const [loading, setloading] = useState(false);
   const [loadingimg, setloadingimg] = useState(false);
+  const [tabs, settabs] = useState("blogs");
   const [blogs, setblogs] = useState([]);
+  const [uploads, setuploads] = useState([]);
+  const storage = getStorage();
 
   useEffect(() => {
     const run = async () => {
@@ -35,6 +46,32 @@ const AddPost = () => {
         arr.push({ id: doc?.id, ...doc.data() });
       });
       setblogs(arr);
+
+      const listRef = ref(storage, "images");
+
+      let arrUps = [];
+
+      listAll(listRef)
+        .then((res) => {
+          res.prefixes.forEach((folderRef) => {
+            // All the prefixes under listRef.
+            // You may call listAll() recursively on them.
+          });
+          res.items.forEach((itemRef) => {
+            // All the items under listRef.
+            getDownloadURL(ref(storage, itemRef.fullPath))
+              .then((url) => {
+                arrUps.push(url);
+              })
+              .catch((error) => {
+                // Handle any errors
+              });
+          });
+        })
+        .catch((error) => {
+          // Uh-oh, an error occurred!
+        });
+      setuploads(arrUps);
     };
 
     run();
@@ -48,13 +85,21 @@ const AddPost = () => {
   };
 
   const handleImageUpload = async () => {
-    const storage = getStorage();
     const storageRef = ref(storage, `images/${coverImage.name}`);
 
     await uploadBytes(storageRef, coverImage);
 
     const url = await getDownloadURL(storageRef);
     setImageUrl(url);
+    setloadingimg(false);
+  };
+  const handleImageUpload2 = async () => {
+    const storageRef = ref(storage, `images/${coverImage2.name}`);
+
+    await uploadBytes(storageRef, coverImage2);
+
+    const url = await getDownloadURL(storageRef);
+    setImageUrl2(url);
     setloadingimg(false);
   };
 
@@ -78,6 +123,16 @@ const AddPost = () => {
     };
     run();
   }, [coverImage]);
+
+  useEffect(() => {
+    const run = async () => {
+      if (coverImage2) {
+        setloadingimg(true);
+        await handleImageUpload2();
+      }
+    };
+    run();
+  }, [coverImage2]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -141,37 +196,100 @@ const AddPost = () => {
             Blog CMS
           </h1>
         </div>
-        {blogs?.map((x, i) => {
-          return (
-            <div
-              key={i}
-              className="flex flex-col items-start w-full bg-[#eee] rounded-lg p-2 mb-2"
-            >
-              <div className="flex mb-1">
-                <img
-                  src={x?.imageUrl}
-                  className="w-[50px] h-[50px] bg-[white] rounded"
-                />
-                <p className="ml-3 leading-4 text-black">{x?.title}</p>
-              </div>
+        <div className="flex flex-row items-center mb-5">
+          <strong
+            onClick={() => {
+              settabs("blogs");
+            }}
+            className={`text-[${
+              tabs === "blogs" ? "black" : "gray"
+            }] cursor-pointer mr-3`}
+          >
+            Blogs
+          </strong>
+          <strong
+            onClick={() => {
+              settabs("uploads");
+            }}
+            className={`text-[${
+              tabs === "uploads" ? "black" : "gray"
+            }] cursor-pointer mr-3`}
+          >
+            Uploads
+          </strong>
+        </div>
+        {tabs == "blogs" ? (
+          blogs?.map((x, i) => {
+            return (
+              <div
+                key={i}
+                className="flex flex-col items-start w-full bg-[#eee] rounded-lg p-2 mb-2"
+              >
+                <div className="flex mb-1">
+                  <img
+                    src={x?.imageUrl}
+                    className="w-[50px] h-[50px] bg-[white] rounded"
+                  />
+                  <p className="ml-3 leading-4 text-black">{x?.title}</p>
+                </div>
 
-              <div className="flex">
-                <strong
-                  onClick={() => {
-                    handleDelete(x?.id);
-                  }}
-                  className="text-sm text-[red] cursor-pointer mr-2"
-                >
-                  Delete
-                </strong>
+                <div className="flex">
+                  <strong
+                    onClick={() => {
+                      handleDelete(x?.id);
+                    }}
+                    className="text-sm text-[red] cursor-pointer mr-2"
+                  >
+                    Delete
+                  </strong>
 
-                {/* <strong className="text-sm text-[gray] cursor-pointer">
+                  {/* <strong className="text-sm text-[gray] cursor-pointer">
                   Edit
                 </strong> */}
+                </div>
               </div>
+            );
+          })
+        ) : (
+          <div>
+            <div className="mb-3 flex items-center justify-center w-full h-40 bg-gray-100 border-dashed border-2 border-gray-300 rounded-md">
+              {imageUrl2 ? (
+                <img
+                  src={URL.createObjectURL(coverImage2)}
+                  alt="Cover"
+                  className="w-full h-full object-cover rounded-md"
+                />
+              ) : (
+                <label htmlFor="coverImage" className="cursor-pointer">
+                  <span className="text-blue-500">
+                    {loadingimg ? "loading" : "Click to upload a cover image"}
+                  </span>
+                </label>
+              )}
+              <input
+                type="file"
+                id="coverImage"
+                className="hidden"
+                accept="image/*"
+                onChange={(e) => setCoverImage2(e.target.files[0])}
+              />
             </div>
-          );
-        })}
+            <div className="flex flex-row flex-wrap ">
+              {uploads?.map((x, i) => {
+                return (
+                  <img
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    src={x}
+                    key={i}
+                    className="w-[45%] h-[130px] bg-[#eee] mr-1 mb-1 rounded"
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Main Pane */}
