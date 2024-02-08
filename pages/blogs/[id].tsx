@@ -89,8 +89,73 @@ const BlogPost = () => {
         />
       )}
       <div
-        className="text-[white]"
-        dangerouslySetInnerHTML={{ __html: blog.post }}
+        className="prose"
+        dangerouslySetInnerHTML={{
+          __html: `<main><style>
+          h1 {
+            font-weight: bold;
+            margin-bottom: 20px;
+          }
+          
+          h2,h3 {
+            margin-bottom: 10px;
+            font-weight: bold
+          }
+          h1 {
+            font-size: 2em;
+          }
+          
+          h2 {
+            font-size: 1.5em;
+          }
+          
+          h3 {
+            font-size: 1.2em;
+          }
+          
+          p {
+            margin-bottom: 20px;
+          }
+          
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+          
+          ul, ol {
+            padding-left: 40px;
+            margin-bottom: 20px;
+          }
+          
+          li {
+            margin-bottom: 10px;
+          }
+
+          ul {
+            list-style-type: disc;
+          }
+          
+          ol {
+            list-style-type: decimal;
+          }
+          
+          blockquote {
+            margin: 0;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+          }
+          
+          a {
+            color: #3498db;
+            text-decoration: none;
+          }
+          
+          a:hover {
+            text-decoration: underline;
+          }
+          </style> ${blog.post}</main>`,
+        }}
       />
     </div>
   );
