@@ -180,6 +180,35 @@ const AddPost = () => {
     }
   };
 
+  const [password, setPassword] = useState("Admin@Besocial");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [auth, setauth] = useState(true);
+
+  const handleLogin = () => {
+    if (enteredPassword === password) {
+      // Password is correct, proceed to render content
+      setauth(false);
+    } else {
+      alert("Incorrect password");
+    }
+  };
+
+  if (auth) {
+    return (
+      <div className="h-screen flex flex-col justify-center items-center">
+        <h1>Admin</h1>
+        <input
+          className="text-[black]"
+          type="password"
+          placeholder="Enter password"
+          value={enteredPassword}
+          onChange={(e) => setEnteredPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Login</button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex bg-[white]">
       <div className="w-1/4 border-r border-gray-200 p-4">
