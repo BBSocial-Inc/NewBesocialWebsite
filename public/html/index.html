@@ -62,7 +62,13 @@
           BeSocial, the social app for creator monetization, content discovery,
            video shopping and social commerce for Africans everywhere
         </div>
-        <a href="#" target="_blank" class="w-inline-block" id="storelink">
+        <a
+          href=""
+          target="_blank"
+          class="w-inline-block"
+          data-tag-id="storelink"
+          id="storelink1"
+        >
           <img
             src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/6593ff7c1d761910b164644a_Button.png"
             loading="lazy"
@@ -153,7 +159,13 @@
         African creators and influencer + their unique content to mainstream
         prominence
       </div>
-      <a href="#" target="_blank" class="w-inline-block" id="storelink">
+      <a
+        href=""
+        target="_blank"
+        class="w-inline-block"
+        data-tag-id="storelink"
+        id="storelink2"
+      >
         <img
           src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/6593ff7c1d761910b164644a_Button.png"
           loading="lazy"
@@ -575,7 +587,8 @@
             href="#"
             target="_blank"
             class="link-block w-inline-block"
-            id="storelink"
+            data-tag-id="storelink"
+            id="storelink3"
           >
             <img
               src="https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/65944806408a1cbb8171896f_Group%204295.png"
@@ -624,11 +637,18 @@
           "https://play.google.com/store/apps/details?id=com.besocial.apps"; // Replace with your actual Play Store URL
 
         // Set the link href attribute based on the device
-        const storeLink = $("#storelink");
+        const storeLink1 = $("#storelink1");
+        const storeLink2 = $("#storelink2");
+        const storeLink3 = $("#storelink3");
+
         if (isIOS) {
-          storeLink.attr("href", appStoreURL);
+          storeLink1.attr("href", appStoreURL);
+          storeLink2.attr("href", appStoreURL);
+          storeLink3.attr("href", appStoreURL);
         } else {
-          storeLink.attr("href", playStoreURL);
+          storeLink1.attr("href", playStoreURL);
+          storeLink2.attr("href", playStoreURL);
+          storeLink3.attr("href", playStoreURL);
         }
       });
     </script>

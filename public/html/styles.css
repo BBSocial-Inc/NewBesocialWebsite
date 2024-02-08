@@ -2764,17 +2764,18 @@ textarea.w-select {
 }
 
 .collection-list-wrapper {
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: flex-start;
   margin-top: -17px;
   padding-left: 10vw;
   padding-right: 10vw;
   display: flex;
+  overflow: scroll;
 }
 
 .collection-list {
   width: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   display: flex;
 }
 
