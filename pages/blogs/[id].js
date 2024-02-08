@@ -91,15 +91,17 @@ const BlogPost = () => {
       <div
         className="prose"
         dangerouslySetInnerHTML={{
-          __html: `<main><style>
+          __html: `<main style="color: white"><style>
           h1 {
             font-weight: bold;
             margin-bottom: 20px;
+            color: white
           }
           
           h2,h3 {
             margin-bottom: 10px;
             font-weight: bold
+            color: white
           }
           h1 {
             font-size: 2em;
@@ -115,6 +117,7 @@ const BlogPost = () => {
           
           p {
             margin-bottom: 20px;
+            color: white
           }
           
           img {
@@ -125,10 +128,12 @@ const BlogPost = () => {
           ul, ol {
             padding-left: 40px;
             margin-bottom: 20px;
+            color: white
           }
           
           li {
             margin-bottom: 10px;
+            color: white
           }
 
           ul {
