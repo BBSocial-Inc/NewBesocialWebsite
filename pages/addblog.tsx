@@ -195,16 +195,30 @@ const AddPost = () => {
 
   if (auth) {
     return (
-      <div className="h-screen flex flex-col justify-center items-center">
-        <h1>Admin</h1>
+      <div
+        style={{
+          backgroundImage:
+            "url(https://assets-global.website-files.com/6593e19d1d741bf69d8caed3/6594524f3c5db5bf0eb26415_Group%204296.png)",
+          // backgroundPosition: "0 -60px",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+        className="h-screen flex flex-col justify-center items-center"
+      >
+        <h1 className="mb-3">Login to access blog</h1>
         <input
-          className="text-[black]"
+          className="text-[black] bg-[white] border-[black] border rounded w-[300px] h-[45px] px-3"
           type="password"
           placeholder="Enter password"
           value={enteredPassword}
           onChange={(e) => setEnteredPassword(e.target.value)}
         />
-        <button onClick={handleLogin}>Login</button>
+        <button
+          className="text-[black] bg-[white] border-[black] border rounded w-[300px] h-[45px] px-3 mt-3"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
       </div>
     );
   }
