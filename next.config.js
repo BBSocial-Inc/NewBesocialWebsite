@@ -3,10 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   rewrites: async () => [
     {
-      source: "/public/html/index.html",
-      destination: "/pages/api/myfile.js",
+      source: "/",
+      destination: "/html/index.html",
     },
   ],
 };
 
 module.exports = nextConfig;
+
+// rewrites: async () => [
+//   {
+//     source: "/",
+//     destination: "/index.html",
+//   },
+// ],

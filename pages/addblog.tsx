@@ -76,7 +76,7 @@ const AddPost = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-md rounded-md">
+    <div className="max-w-2xl mx-auto my-8 p-8 bg-white rounded-md">
       <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">
         Add Blog Post
       </h1>

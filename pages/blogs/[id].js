@@ -35,9 +35,25 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-8 shadow-md rounded-md bg-[black]">
-      <div className="flex flex-row justify-between items-align mb-5">
-        <img src="/icon.png" className="w-10 rounded" alt={blog.title}></img>
+    <div className="max-w-2xl mx-auto my-8 p-8  rounded-md bg-[black]">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 30,
+        }}
+        className="flex flex-row justify-between items-align mb-5"
+      >
+        <img
+          style={{
+            width: 50,
+            borderRadius: 5,
+          }}
+          src="/icon.png"
+          className="w-10 rounded"
+          alt={blog.title}
+        ></img>
 
         <strong
           onClick={() => {
