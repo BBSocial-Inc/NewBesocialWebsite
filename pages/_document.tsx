@@ -35,6 +35,21 @@ export default function Document() {
           name="twitter:image"
           content={"https://joinbesocial.com/cover.png"}
         ></meta>
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-SXKPP70MVL"
+        ></script>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `    window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'G-SXKPP70MVL')`,
+          }}
+        />
       </Head>
       <body>
         <Main />

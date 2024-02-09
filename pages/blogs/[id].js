@@ -4,6 +4,12 @@ import { useRouter } from "next/router";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import db from "../../firebase";
 
+export const metadata = {
+  title: "Acme Dashboard",
+  description: "The official Next.js Course Dashboard, built with App Router.",
+  metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
+};
+
 const BlogPost = () => {
   const router = useRouter();
   const { id } = router.query;
