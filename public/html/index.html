@@ -206,7 +206,7 @@
           class="image-19"
         />
         <div class="div-block-16">
-          <div class="post-content=">Post <br />content</div>
+          <div class="post-content">Post <br />content</div>
           <div class="text-2">
             Post video response to <br />some trending topics in <br />the world
           </div>
@@ -287,9 +287,19 @@
           alt=""
           class="image-11"
         />
-        <div class="text-5">
-          Download App <img style="margin-left: 5px" src="../maki_arrow.svg" />
-        </div>
+        <a
+          href="#"
+          target="_blank"
+          class="link-block w-inline-block"
+          data-tag-id="storelink"
+          id="storelink4"
+          style="cursor: pointer"
+        >
+          <div id="" class="text-5">
+            Download App
+            <img style="margin-left: 5px" src="../maki_arrow.svg" />
+          </div>
+        </a>
       </div>
     </div>
     <div class="div-block-4">
@@ -394,11 +404,19 @@
                 alt=""
                 class="image-11"
               />
-              <div class="text-5">
-                Download App
-                <img style="margin-left: 5px" src="../maki_arrow.svg" />
-              </div>
-
+              <a
+                href="#"
+                target="_blank"
+                class="link-block w-inline-block"
+                data-tag-id="storelink"
+                id="storelink5"
+                style="cursor: pointer"
+              >
+                <div class="text-5">
+                  Download App
+                  <img style="margin-left: 5px" src="../maki_arrow.svg" />
+                </div>
+              </a>
               <div
                 style="
                   position: absolute;
@@ -466,10 +484,19 @@
                 alt=""
                 class="image-11"
               />
-              <div class="text-5">
-                Download App
-                <img style="margin-left: 5px" src="../maki_arrow.svg" />
-              </div>
+              <a
+                href="#"
+                target="_blank"
+                class="link-block w-inline-block"
+                data-tag-id="storelink"
+                id="storelink6"
+                style="cursor: pointer"
+              >
+                <div class="text-5">
+                  Download App
+                  <img style="margin-left: 5px" src="../maki_arrow.svg" />
+                </div>
+              </a>
 
               <div
                 style="
@@ -636,15 +663,24 @@
         const storeLink1 = $("#storelink1");
         const storeLink2 = $("#storelink2");
         const storeLink3 = $("#storelink3");
+        const storeLink4 = $("#storelink4");
+        const storeLink5 = $("#storelink5");
+        const storeLink6 = $("#storelink6");
 
         if (isIOS) {
           storeLink1.attr("href", appStoreURL);
           storeLink2.attr("href", appStoreURL);
           storeLink3.attr("href", appStoreURL);
+          storeLink4.attr("href", appStoreURL);
+          storeLink5.attr("href", appStoreURL);
+          storeLink6.attr("href", appStoreURL);
         } else {
           storeLink1.attr("href", playStoreURL);
           storeLink2.attr("href", playStoreURL);
           storeLink3.attr("href", playStoreURL);
+          storeLink4.attr("href", playStoreURL);
+          storeLink5.attr("href", playStoreURL);
+          storeLink6.attr("href", playStoreURL);
         }
       });
     </script>
