@@ -21,12 +21,14 @@ import {
 import { Editor } from "@tinymce/tinymce-react";
 
 import db from "../firebase";
+import { settings } from "firebase/analytics";
 
 const AddPost = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [post, setPost] = useState("");
   const [author, setAuthor] = useState("");
+  const [editID, seteditID] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
   const [coverImage2, setCoverImage2] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -35,6 +37,7 @@ const AddPost = () => {
   const [loadingimg, setloadingimg] = useState(false);
   const [tabs, settabs] = useState("blogs");
   const [blogs, setblogs] = useState([]);
+  const [drafts, setdrafts] = useState([]);
   const [uploads, setuploads] = useState([]);
   const storage = getStorage();
 
@@ -42,10 +45,14 @@ const AddPost = () => {
     const run = async () => {
       const querySnapshot = await getDocs(collection(db, "blogPosts"));
       let arr = [];
+      let arrDrats = [];
       querySnapshot.forEach((doc) => {
-        arr.push({ id: doc?.id, ...doc.data() });
+        if (doc.data()?.draft == true) {
+          arrDrats.push({ id: doc?.id, ...doc.data() });
+        } else arr.push({ id: doc?.id, ...doc.data() });
       });
       setblogs(arr);
+      setdrafts(arrDrats);
 
       const listRef = ref(storage, "images");
 
@@ -93,11 +100,10 @@ const AddPost = () => {
     setImageUrl(url);
     setloadingimg(false);
   };
+
   const handleImageUpload2 = async () => {
     const storageRef = ref(storage, `images/${coverImage2.name}`);
-
     await uploadBytes(storageRef, coverImage2);
-
     const url = await getDownloadURL(storageRef);
     setImageUrl2(url);
     setloadingimg(false);
@@ -134,8 +140,8 @@ const AddPost = () => {
     run();
   }, [coverImage2]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e?, isDraft = false) => {
+    e?.preventDefault();
     if (loading) return;
     setloading(true);
 
@@ -150,12 +156,22 @@ const AddPost = () => {
           post: await log(),
           author,
           imageUrl,
-          // Add additional fields as needed
+          draft: isDraft,
         };
 
-        const docRef = await addDoc(collection(db, "blogPosts"), blogPostData);
+        if (editID) {
+          const docRef = await updateDoc(
+            doc(db, "blogPosts", editID),
+            blogPostData
+          );
+        } else {
+          const docRef = await addDoc(
+            collection(db, "blogPosts"),
+            blogPostData
+          );
+        }
 
-        console.log("Blog post added with ID:", docRef.id);
+        // console.log("Blog post added with ID:", docRef.id);
 
         // Reset form fields after successful submission
         setTitle("");
@@ -182,7 +198,7 @@ const AddPost = () => {
 
   const [password, setPassword] = useState("Admin@Besocial");
   const [enteredPassword, setEnteredPassword] = useState("");
-  const [auth, setauth] = useState(true);
+  const [auth, setauth] = useState(false);
 
   const handleLogin = () => {
     if (enteredPassword === password) {
@@ -260,6 +276,16 @@ const AddPost = () => {
           >
             Uploads
           </strong>
+          <strong
+            onClick={() => {
+              settabs("drafts");
+            }}
+            className={`text-[${
+              tabs === "drafts" ? "black" : "gray"
+            }] cursor-pointer mr-3`}
+          >
+            Drafts
+          </strong>
         </div>
         {tabs == "blogs" ? (
           blogs?.map((x, i) => {
@@ -286,14 +312,25 @@ const AddPost = () => {
                     Delete
                   </strong>
 
-                  {/* <strong className="text-sm text-[gray] cursor-pointer">
-                  Edit
-                </strong> */}
+                  <strong
+                    onClick={() => {
+                      setTitle(x?.title);
+                      setSummary(x?.summary);
+                      setAuthor(x?.author);
+                      setPost(x?.post);
+                      setImageUrl(x?.imageUrl);
+                      setCoverImage(x?.imageUrl);
+                      seteditID(x?.id);
+                    }}
+                    className="text-sm text-[gray] cursor-pointer"
+                  >
+                    Edit
+                  </strong>
                 </div>
               </div>
             );
           })
-        ) : (
+        ) : tabs == "uploads" ? (
           <div>
             <div className="mb-3 flex items-center justify-center w-full h-40 bg-gray-100 border-dashed border-2 border-gray-300 rounded-md">
               {imageUrl2 ? (
@@ -332,6 +369,49 @@ const AddPost = () => {
               })}
             </div>
           </div>
+        ) : (
+          drafts?.map((x, i) => {
+            return (
+              <div
+                key={i}
+                className="flex flex-col items-start w-full bg-[#eee] rounded-lg p-2 mb-2"
+              >
+                <div className="flex mb-1">
+                  <img
+                    src={x?.imageUrl}
+                    className="w-[50px] h-[50px] bg-[white] rounded"
+                  />
+                  <p className="ml-3 leading-4 text-black">{x?.title}</p>
+                </div>
+
+                <div className="flex">
+                  <strong
+                    onClick={() => {
+                      handleDelete(x?.id);
+                    }}
+                    className="text-sm text-[red] cursor-pointer mr-2"
+                  >
+                    Delete
+                  </strong>
+
+                  <strong
+                    onClick={() => {
+                      setTitle(x?.title);
+                      setSummary(x?.summary);
+                      setAuthor(x?.author);
+                      setPost(x?.post);
+                      setImageUrl(x?.imageUrl);
+                      setCoverImage(x?.imageUrl);
+                      seteditID(x?.id);
+                    }}
+                    className="text-sm text-[gray] cursor-pointer"
+                  >
+                    Edit
+                  </strong>
+                </div>
+              </div>
+            );
+          })
         )}
       </div>
 
@@ -345,7 +425,7 @@ const AddPost = () => {
             <div className="flex items-center justify-center w-full h-40 bg-gray-100 border-dashed border-2 border-gray-300 rounded-md">
               {imageUrl ? (
                 <img
-                  src={URL.createObjectURL(coverImage)}
+                  src={coverImage}
                   alt="Cover"
                   className="w-full h-full object-cover rounded-md"
                 />
@@ -426,15 +506,26 @@ const AddPost = () => {
                     Promise.reject("See docs to implement AI Assistant")
                   ),
               }}
-              initialValue="Your blog post here"
+              initialValue={post ?? "Write your blog here"}
             />
             {/* <button onClick={log}>Log editor content</button> */}
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none"
-            >
-              {loading ? "Publishing" : "Publish"}
-            </button>
+            <div className="flex flex-row justify-between mt-5">
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 focus:outline-none"
+              >
+                {loading ? "Publishing" : "Publish"}
+              </button>
+              <div className="w-[20px]" />
+              <button
+                onClick={() => {
+                  handleSubmit(null, true);
+                }}
+                className="w-full bg-gray-500 text-white py-3 px-6 rounded-md hover:bg-gray-600 focus:outline-none"
+              >
+                {loading ? "Saving" : "Save to Draft"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
