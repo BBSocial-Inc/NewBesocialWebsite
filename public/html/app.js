@@ -12303,10 +12303,15 @@ function fetchBlogs() {
             href="/blogs/${doc.id}"
             class="div-block-12 w-inline-block"
           ></a>
+          <a
+         style="text-decoration: none"
+          href="/blogs/${doc.id}"
+        >
           <div class="own-hashtag">${blog?.title}</div>
           <div
             class="create-own-and-sell-trends-using-your-unique-hashtags"
-          >${blog?.summary}</div>
+          >${String(blog?.summary).substring(0, 150)}...</div>
+          </a>
         </aside>
     
           `;
