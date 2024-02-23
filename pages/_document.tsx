@@ -4,17 +4,28 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>BeSocial | Endless Entertainment!</title>
-        <meta name="title" content={"BeSocial | Endless Entertainment!"}></meta>
+        <title>
+          BeSocial- Social App for creator monetization-Joinbesocial
+        </title>
+        <meta
+          name="title"
+          content={"BeSocial- Social App for creator monetization-Joinbesocial"}
+        ></meta>
         <meta
           name="og:title"
-          content={"BeSocial | Endless Entertainment!"}
+          content={"BeSocial- Social App for creator monetization-Joinbesocial"}
         ></meta>
 
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://joinbesocial.com/"></meta>
-        <meta name="description" content="Endless Entertainment!" />
-        <meta name="og:description" content="Endless Entertainment!" />
+        <meta
+          name="description"
+          content="Discover endless entertainment, creator monetization, and social commerce on BeSocial. join the community that truly pays."
+        />
+        <meta
+          name="og:description"
+          content="Discover endless entertainment, creator monetization, and social commerce on BeSocial. join the community that truly pays."
+        />
         <link rel="icon" href="/icon.png" />
         <meta
           property="og:image"
@@ -23,10 +34,10 @@ export default function Document() {
 
         <meta
           name="twitter:title"
-          content={"BeSocial | Endless Entertainment!"}
+          content={"BeSocial- Social App for creator monetization-Joinbesocial"}
         ></meta>
         <meta
-          content="Endless Entertainment!"
+          content="Discover endless entertainment, creator monetization, and social commerce on BeSocial. join the community that truly pays."
           name="twitter:description"
         ></meta>
         <meta name="twitter:url" content="https://joinbesocial.com/"></meta>
