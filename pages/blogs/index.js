@@ -79,7 +79,7 @@ const Blogs = () => {
         {blog?.map((x, i) => {
           return (
             <a
-              href={"/blogs/" + x?.id}
+              href={"/blog/" + x?.id}
               key={i}
               className="col-span-1 cursor-pointer"
             >

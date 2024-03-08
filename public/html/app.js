@@ -12300,12 +12300,12 @@ function fetchBlogs() {
         <aside class="div-block-11">
           <a
             style="background-image: url(${blog?.imageUrl})"
-            href="/blogs/${doc.id}"
+            href="/blog/${doc.id}"
             class="div-block-12 w-inline-block"
           ></a>
           <a
          style="text-decoration: none"
-          href="/blogs/${doc.id}"
+          href="/blog/${doc.id}"
         >
           <div class="own-hashtag">${blog?.title}</div>
           <div
